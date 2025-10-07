@@ -20,6 +20,7 @@
   --color-white: #fff;
   --color-black: #000000;
   --color-navi: #1d252c;
+  --color-gray: #717171;
 }
 
 .a11y-hidden {
@@ -50,4 +51,13 @@ li {
 a {
   text-decoration: none;
   color: inherit;
+}
+
+button {
+  border: none;
+  background-color: inherit;
+}
+
+button:hover {
+  cursor: pointer;
 }
