@@ -21,6 +21,7 @@
   --color-black: #000000;
   --color-navi: #1d252c;
   --color-gray: #717171;
+  --color-lightgray: #ebebeb;
 }
 
 .a11y-hidden {
@@ -37,6 +38,7 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 body {
