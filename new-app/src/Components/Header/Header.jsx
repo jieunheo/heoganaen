@@ -40,7 +40,9 @@ function Header() {
     <HeaderDiv>
       <div className="header-wrap">
         <h1 className="logo">
-          <img src="./imgs/logo.png" alt="허가낸 닭발" />
+          <Link to="/">
+            <img src="./imgs/logo.png" alt="허가낸 닭발" />
+          </Link>
         </h1>
         <nav className="gnb">
           <ul>
