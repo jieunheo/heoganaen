@@ -46,6 +46,11 @@ body {
   background-color: #f7f5ed;
 }
 
+main {
+  scroll-behavior: smooth;
+  margin-top: 100px;
+}
+
 li {
   list-style: none;
 }
