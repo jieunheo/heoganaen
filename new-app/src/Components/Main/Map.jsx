@@ -5,5 +5,5 @@ const { kakao, naver } = window;
 const MapDiv = styled.section``;
 
 export default function Map() {
-  return <MapDiv>지도</MapDiv>;
+  return <MapDiv id="directions">지도</MapDiv>;
 }

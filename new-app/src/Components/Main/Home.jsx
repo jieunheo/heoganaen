@@ -66,7 +66,6 @@ export default function Home() {
       <SectionWrap
         title="오시는 길"
         desc={<p>전북 전주시 완산구 동문길 64, 허가낸 닭발</p>}
-        id="directions"
       >
         <Map />
       </SectionWrap>
