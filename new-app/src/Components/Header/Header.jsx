@@ -55,7 +55,7 @@ function Header() {
         <nav className="gnb">
           <ul>
             <li className="gnb-item">
-              <Link to="/">브랜드</Link>
+              <Link to="/#banner">메인</Link>
             </li>
             <li className="gnb-item">
               <Link to="/menu">메뉴</Link>
