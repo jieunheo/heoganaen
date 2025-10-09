@@ -1,5 +1,9 @@
+import { useRef, useState } from "react";
 import styled from "styled-components";
+
 import MoreButton from "./MoreButton";
+import Modal from "../Modal/Modal";
+import NotiItem from "./NotiItem";
 
 const NotiWrap = styled.div`
   width: 100%;
@@ -71,69 +75,38 @@ const NotiWrap = styled.div`
   }
 `;
 
-export default function NotiList() {
-  return (
-    <NotiWrap>
-      <ul className="noti-list">
-        <li className="noti-item">
-          <div className="date">
-            <p className="year-month">2025.10</p>
-            <p className="day">10</p>
-          </div>
-          <div className="noti-info">
-            <p className="noti-title">
-              [공지] 2025년 추석 연휴 기간 영업일 안내
-            </p>
-            <p className="noti-desc">
-              [공지] 2025년 추석 연휴 기간 영업일 안내
-            </p>
-          </div>
-          <div className="img-wrap">
-            <img src="../../imgs/mm01.jpg" alt="공지" />
-          </div>
-        </li>
-        <li className="noti-item">
-          <div className="date">
-            <p className="year-month">2025.10</p>
-            <p className="day">10</p>
-          </div>
-          <div className="noti-info">
-            <p className="noti-title">
-              [공지] 2025년 추석 연휴 기간 영업일 안내
-            </p>
-            <p className="noti-desc">
-              [공지] 2025년 추석 연휴 기간 영업일 안내
-            </p>
-          </div>
-          <div className="img-wrap">
-            <img src="../../imgs/mm01.jpg" alt="공지" />
-          </div>
-        </li>
-        <li className="noti-item">
-          <div className="date">
-            <p className="year-month">2025.10</p>
-            <p className="day">10</p>
-          </div>
-          <div className="noti-info">
-            <p className="noti-title">
-              [공지] 2025년 추석 연휴 기간 영업일 안내
-            </p>
-            <p className="noti-desc">
-              [공지] 2025년 추석 연휴 기간 영업일 안내
-            </p>
-          </div>
-        </li>
-      </ul>
+export default function NotiList({ notis }) {
+  const [modal, setModal] = useState(null);
 
-      <MoreButton
-        text={
-          <>
-            더보기
-            <img src="../../imgs/icon-more-arrow.svg" alt="" />
-          </>
-        }
-        link="/notice"
-      />
-    </NotiWrap>
+  function openModal(item) {
+    setModal(item);
+  }
+
+  function closeModal() {
+    setModal(null);
+  }
+
+  return (
+    <>
+      <NotiWrap>
+        <ul className="noti-list">
+          {notis.map((item) => {
+            return <NotiItem item={item} openModal={openModal} />;
+          })}
+        </ul>
+
+        <MoreButton
+          text={
+            <>
+              더보기
+              <img src="../../imgs/icon-more-arrow.svg" alt="" />
+            </>
+          }
+          link="/notice"
+        />
+      </NotiWrap>
+
+      {modal && <Modal type="noti" item={modal} closeModal={closeModal} />}
+    </>
   );
 }
