@@ -28,7 +28,7 @@ const BannerDiv = styled.section`
 
 export default function Banner() {
   return (
-    <BannerDiv>
+    <BannerDiv id="banner">
       <div className="inner-wrap">
         <h2 className="a11y-hidden">허가낸 닭발 소개</h2>
         <strong className="title">허가낸 닭발</strong>
