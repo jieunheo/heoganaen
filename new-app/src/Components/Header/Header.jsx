@@ -2,6 +2,14 @@ import { HashLink as Link } from "react-router-hash-link";
 import styled from "styled-components";
 
 const HeaderDiv = styled.header`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #f7f5ed;
+
+  z-index: 100;
+
   .header-wrap {
     display: flex;
     align-items: center;
