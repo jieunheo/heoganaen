@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import MenuItem from "./MenuItem";
+import MenuTab from "./MenuTab";
 
 const MenuDiv = styled.main`
   .title-wrap {
@@ -140,25 +141,24 @@ const MenuDiv = styled.main`
   }
 `;
 
-const titleArray = {
-  main: "메인",
-  meat: "고기류",
-  soup: "국물류",
-  etc: "기타",
-  noodle: "면류",
-  rice: "밥류",
-  alcohol: "주류",
-  Makgeolli: "막걸리",
-  drink: "음료",
-};
+// const titleArray = {
+//   main: "메인",
+//   meat: "고기류",
+//   soup: "국물류",
+//   etc: "기타",
+//   noodle: "면류",
+//   rice: "밥류",
+//   alcohol: "주류",
+//   Makgeolli: "막걸리",
+//   drink: "음료",
+// };
 
 export default function Menu() {
   const [allMenus, setAllMenus] = useState(null);
-  const [viewMenus, setViewMenus] = useState([]);
   const [currentMenu, setCurrentMenu] = useState("main");
-  const [cates, setCates] = useState([]);
+  const [cates, setCates] = useState({});
   const [loading, setLoading] = useState(true);
-  console.log(viewMenus);
+  // console.log(viewMenus);
 
   useEffect(() => {
     async function getData() {
@@ -170,38 +170,27 @@ export default function Menu() {
           throw new Error("데이터를 가져오는 중 문제가 발생했습니다.");
         const data = await res.json();
 
-        const allMenuData = data.data.sort((a, b) => {
-          return a.order - b.order;
-        });
+        console.log(data);
+
+        const allMenuData = data.menus;
 
         setAllMenus(allMenuData);
         setLoading(false);
-        settingMenu(allMenuData);
+        setCates({
+          main: [...data["cates"]["main"]],
+          sub: [...data["cates"]["sub"]],
+        });
       } catch (err) {
         console.log(err);
       }
     }
 
     getData();
-  }, [currentMenu]);
-
-  function settingMenu(allMenuData) {
-    let datas;
-    if (allMenus) datas = allMenus;
-    else datas = allMenuData;
-
-    let category = [];
-    const filter = datas.filter((item) => {
-      if (item.type === currentMenu) {
-        category = category ? [...category, item.sub] : [item.sub];
-        return true;
-      }
-    });
-    setCates([...new Set(category)]);
-    setViewMenus([...filter]);
-  }
+  }, []);
 
   function handleMenu(type) {
+    console.log(allMenus[type]);
+
     setCurrentMenu(type);
   }
 
@@ -216,47 +205,33 @@ export default function Menu() {
       </section>
       <section className="menu-wrap">
         <h3 className="a11y-hidden">메뉴 선택</h3>
-        <ul className="tab-list">
-          <li className="tab-item ">
-            <button
-              className={currentMenu === "main" ? "active" : ""}
-              onClick={() => handleMenu("main")}
-            >
-              메인
-            </button>
-          </li>
-          <li className="tab-item">
-            <button
-              className={currentMenu === "dessert" ? "active" : ""}
-              onClick={() => handleMenu("dessert")}
-            >
-              후식
-            </button>
-          </li>
-          <li className="tab-item">
-            <button
-              className={currentMenu === "drink" ? "active" : ""}
-              onClick={() => handleMenu("drink")}
-            >
-              음료
-            </button>
-          </li>
-        </ul>
+        <MenuTab
+          tabs={cates?.main}
+          currentMenu={currentMenu}
+          handleMenu={handleMenu}
+        />
         {loading ? (
           <div>로딩 중...</div>
         ) : (
           <>
-            {cates.map((cate) => (
-              <div className={currentMenu === "drink" ? "drink" : ""}>
-                <h4 className="menu-title">{titleArray[cate]}</h4>
-                <ul className="menu-list">
-                  {viewMenus.map((item) => {
-                    if (item.sub === cate)
-                      return <MenuItem key={item.id} item={item} />;
-                  })}
-                </ul>
-              </div>
-            ))}
+            {cates["sub"].map((cate) => {
+              console.log(cate);
+              if (currentMenu === cate["name"])
+                return (
+                  <div
+                    key={cate["sub_name"]}
+                    className={currentMenu === "drink" ? "drink" : ""}
+                  >
+                    <h4 className="menu-title">{cate["ko_name"]}</h4>
+                    <ul className="menu-list">
+                      {allMenus[currentMenu].map((item) => {
+                        if (item.sub === cate["sub_name"])
+                          return <MenuItem key={item.id} item={item} />;
+                      })}
+                    </ul>
+                  </div>
+                );
+            })}
           </>
         )}
       </section>
