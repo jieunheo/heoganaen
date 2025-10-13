@@ -108,9 +108,11 @@ export default function Menu({ item, closeModal }) {
   return (
     <MenuDiv>
       <div className="menu-info">
-        <div className={`img-wrap ${classVar}`}>
-          <img src={item.url} alt={item.name} />
-        </div>
+        {item.url && (
+          <div className={`img-wrap ${classVar}`}>
+            <img src={item.url} alt={item.name} />
+          </div>
+        )}
         <div className="cont-wrap">
           <div className="basic-info">
             <div className="name">
@@ -123,7 +125,18 @@ export default function Menu({ item, closeModal }) {
               <data value={item.price}>{item.price}</data>원
             </p>
           </div>
-          <div className="explanation">{item.explanation}</div>
+          {item.explanation && (
+            <div className="explanation">
+              {item.explanation.split("\n").map((line) => {
+                return (
+                  <>
+                    {line}
+                    <br />
+                  </>
+                );
+              })}
+            </div>
+          )}
         </div>
       </div>
       <div className="btn-wrap">

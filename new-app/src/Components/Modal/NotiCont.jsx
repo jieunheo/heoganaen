@@ -11,7 +11,16 @@ export default function NotiItem({ item }) {
       )}
       <div className="contents">
         <p className="date">{item["create_date"]}</p>
-        <p className="desc">{item.desc}</p>
+        <p className="desc">
+          {item.desc.split("\n").map((line) => {
+            return (
+              <>
+                {line}
+                <br />
+              </>
+            );
+          })}
+        </p>
       </div>
     </>
   );
