@@ -17,6 +17,9 @@
 :root {
   --color-main: #960a1e;
 
+  --color-best: #ff580f;
+  --color-new: #ffa20f;
+
   --color-white: #fff;
   --color-black: #000000;
   --color-navi: #1d252c;
