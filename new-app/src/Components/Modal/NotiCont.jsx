@@ -10,7 +10,7 @@ export default function NotiItem({ item }) {
         </div>
       )}
       <div className="contents">
-        <p className="date">{item.date}</p>
+        <p className="date">{item["create_date"]}</p>
         <p className="desc">{item.desc}</p>
       </div>
     </>
