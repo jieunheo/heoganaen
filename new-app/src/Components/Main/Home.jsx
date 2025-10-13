@@ -24,7 +24,7 @@ const MainDiv = styled.main`
   }
 `;
 
-export default function Home() {
+export default function Home({ recoms }) {
   const [firstPopup, setFirstPopup] = useState(null);
   const [useFirstModal, setUseFirstModal] = useState(true);
   const [notis, setNotis] = useState([
@@ -228,7 +228,7 @@ export default function Home() {
           </div>
         }
       >
-        <RecomList />
+        <RecomList recoms={recoms} />
       </SectionWrap>
       <SectionWrap
         title="가게 공지사항"

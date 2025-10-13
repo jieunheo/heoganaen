@@ -22,6 +22,9 @@ const RecomWrap = styled.div`
     justify-content: center;
     color: var(--color-white);
   }
+  .recom-item {
+    cursor: pointer;
+  }
   .recom-item:hover {
     transform: translateY(-2%);
     transition: 0.3s linear;
@@ -61,28 +64,28 @@ const RecomWrap = styled.div`
   }
 `;
 
-export default function RecomList() {
+export default function RecomList({ recoms }) {
   return (
     <RecomWrap>
       <ul className="recom-list">
-        <li className="recom-item first">
-          <div className="img-wrap">
-            <img src="../../imgs/mm01.jpg" alt="숯불 무뼈 닭발" />
-          </div>
-          <h3 className="name">숯불 무뼈 닭발</h3>
-        </li>
-        <li className="recom-item second">
-          <div className="img-wrap">
-            <img src="../../imgs/mm05.jpg" alt="간장 닭목살" />
-          </div>
-          <h3 className="name">간장 닭목살</h3>
-        </li>
-        <li className="recom-item third">
-          <div className="img-wrap">
-            <img src="../../imgs/mn01.jpg" alt="냄비 국수" />
-          </div>
-          <h3 className="name">냄비 국수</h3>
-        </li>
+        {recoms.map((recom) => {
+          const recomClass =
+            recom.recom === "1"
+              ? "first"
+              : recom.recom === "2"
+              ? "second"
+              : recom.recom === "3"
+              ? "third"
+              : "";
+          return (
+            <li key={recom.id} className={`recom-item ${recomClass}`}>
+              <div className="img-wrap">
+                <img src={recom.url} alt={recom.name} />
+              </div>
+              <h3 className="name">{recom.name}</h3>
+            </li>
+          );
+        })}
       </ul>
     </RecomWrap>
   );
