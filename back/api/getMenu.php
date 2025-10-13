@@ -32,10 +32,21 @@ try {
         }
     }
     
+    $sql = "SELECT * FROM Menu WHERE recom > 0 ORDER BY recom ASC";
+    $result = $conn->query($sql);
+    
+    $recoms = array();
+    if ($result->num_rows > 0) {
+        while($row = $result->fetch_assoc()) {
+            $recoms[] = $row;
+        }
+    }
+    
     echo json_encode([
         "success" => true,
         "menus" => $menus,
         "cates" => $cates,
+        "recoms" => $recoms,
         "menu_count" => count($menus)
     ], JSON_UNESCAPED_UNICODE);
     
