@@ -1,4 +1,6 @@
+import { useState } from "react";
 import styled from "styled-components";
+import Modal from "../Modal/Modal";
 
 const RecomWrap = styled.div`
   width: 100%;
@@ -65,28 +67,46 @@ const RecomWrap = styled.div`
 `;
 
 export default function RecomList({ recoms }) {
+  const [modal, setModal] = useState(null);
+
+  function openModal(item) {
+    setModal(item);
+  }
+
+  function closeModal() {
+    setModal(null);
+  }
+
   return (
-    <RecomWrap>
-      <ul className="recom-list">
-        {recoms.map((recom) => {
-          const recomClass =
-            recom.recom === "1"
-              ? "first"
-              : recom.recom === "2"
-              ? "second"
-              : recom.recom === "3"
-              ? "third"
-              : "";
-          return (
-            <li key={recom.id} className={`recom-item ${recomClass}`}>
-              <div className="img-wrap">
-                <img src={recom.url} alt={recom.name} />
-              </div>
-              <h3 className="name">{recom.name}</h3>
-            </li>
-          );
-        })}
-      </ul>
-    </RecomWrap>
+    <>
+      <RecomWrap>
+        <ul className="recom-list">
+          {recoms.map((recom) => {
+            const recomClass =
+              recom.recom === "1"
+                ? "first"
+                : recom.recom === "2"
+                ? "second"
+                : recom.recom === "3"
+                ? "third"
+                : "";
+            return (
+              <li
+                key={recom.id}
+                className={`recom-item ${recomClass}`}
+                onClick={() => openModal(recom)}
+              >
+                <div className="img-wrap">
+                  <img src={recom.url} alt={recom.name} />
+                </div>
+                <h3 className="name">{recom.name}</h3>
+              </li>
+            );
+          })}
+        </ul>
+      </RecomWrap>
+
+      {modal && <Modal type="menu" item={modal} closeModal={closeModal} />}
+    </>
   );
 }

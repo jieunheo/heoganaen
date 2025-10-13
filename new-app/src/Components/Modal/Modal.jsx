@@ -51,7 +51,7 @@ export default function Modal({ item, type, closeModal, btnCount, makeItem }) {
             makeItem={makeItem}
           />
         ) : (
-          <Menu closeModal={closeModal} id={id} />
+          <Menu closeModal={closeModal} item={item} />
         )}
       </div>
     </ModalDiv>

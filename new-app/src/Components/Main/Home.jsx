@@ -27,7 +27,6 @@ const MainDiv = styled.main`
 export default function Home({ recoms, notis }) {
   const [firstPopup, setFirstPopup] = useState(null);
   const [useFirstModal, setUseFirstModal] = useState(true);
-  // const [notis, setNotis] = useState([
   //   {
   //     title: "[공지] 2025년 추석 연휴 기간 영업일 안내",
   //     date: "2025.10.10",
@@ -150,7 +149,6 @@ export default function Home({ recoms, notis }) {
       },
     ]);
 
-    // setNotis([
     //   {
     //     title: "[공지] 2025년 추석 연휴 기간 영업일 안내",
     //     date: "2025.10.10",
