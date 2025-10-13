@@ -24,32 +24,32 @@ const MainDiv = styled.main`
   }
 `;
 
-export default function Home({ recoms }) {
+export default function Home({ recoms, notis }) {
   const [firstPopup, setFirstPopup] = useState(null);
   const [useFirstModal, setUseFirstModal] = useState(true);
-  const [notis, setNotis] = useState([
-    {
-      title: "[공지] 2025년 추석 연휴 기간 영업일 안내",
-      date: "2025.10.10",
-      desc: "연휴 영업 관련 내용은 이 위치에 작성된답니다.",
-      img: "../../imgs/mm01.jpg",
-      id: "q",
-    },
-    {
-      title: "[공지] 2025년 추석 연휴 기간 영업일 안내",
-      date: "2025.10.10",
-      desc: "연휴 영업 관련 내용은 이 위치에 작성된답니다.",
-      img: "../../imgs/mm01.jpg",
-      id: "w",
-    },
-    {
-      title: "[공지] 2025년 추석 연휴 기간 영업일 안내",
-      date: "2025.10.10",
-      desc: "연휴 영업 관련 내용은 이 위치에 작성된답니다.",
-      // img: "../../imgs/mm01.jpg",
-      id: "e",
-    },
-  ]);
+  // const [notis, setNotis] = useState([
+  //   {
+  //     title: "[공지] 2025년 추석 연휴 기간 영업일 안내",
+  //     date: "2025.10.10",
+  //     desc: "연휴 영업 관련 내용은 이 위치에 작성된답니다.",
+  //     img: "../../imgs/mm01.jpg",
+  //     id: "q",
+  //   },
+  //   {
+  //     title: "[공지] 2025년 추석 연휴 기간 영업일 안내",
+  //     date: "2025.10.10",
+  //     desc: "연휴 영업 관련 내용은 이 위치에 작성된답니다.",
+  //     img: "../../imgs/mm01.jpg",
+  //     id: "w",
+  //   },
+  //   {
+  //     title: "[공지] 2025년 추석 연휴 기간 영업일 안내",
+  //     date: "2025.10.10",
+  //     desc: "연휴 영업 관련 내용은 이 위치에 작성된답니다.",
+  //     // img: "../../imgs/mm01.jpg",
+  //     id: "e",
+  //   },
+  // ]);
   const [reviews, setReviews] = useState([
     {
       id: 0,
@@ -150,29 +150,29 @@ export default function Home({ recoms }) {
       },
     ]);
 
-    setNotis([
-      {
-        title: "[공지] 2025년 추석 연휴 기간 영업일 안내",
-        date: "2025.10.10",
-        desc: "연휴 영업 관련 내용은 이 위치에 작성된답니다.",
-        img: "../../imgs/mm01.jpg",
-        id: "q",
-      },
-      {
-        title: "[공지] 2025년 추석 연휴 기간 영업일 안내",
-        date: "2025.10.10",
-        desc: "연휴 영업 관련 내용은 이 위치에 작성된답니다.",
-        img: "../../imgs/mm01.jpg",
-        id: "w",
-      },
-      {
-        title: "[공지] 2025년 추석 연휴 기간 영업일 안내",
-        date: "2025.10.10",
-        desc: "연휴 영업 관련 내용은 이 위치에 작성된답니다.",
-        // img: "../../imgs/mm01.jpg",
-        id: "e",
-      },
-    ]);
+    // setNotis([
+    //   {
+    //     title: "[공지] 2025년 추석 연휴 기간 영업일 안내",
+    //     date: "2025.10.10",
+    //     desc: "연휴 영업 관련 내용은 이 위치에 작성된답니다.",
+    //     img: "../../imgs/mm01.jpg",
+    //     id: "q",
+    //   },
+    //   {
+    //     title: "[공지] 2025년 추석 연휴 기간 영업일 안내",
+    //     date: "2025.10.10",
+    //     desc: "연휴 영업 관련 내용은 이 위치에 작성된답니다.",
+    //     img: "../../imgs/mm01.jpg",
+    //     id: "w",
+    //   },
+    //   {
+    //     title: "[공지] 2025년 추석 연휴 기간 영업일 안내",
+    //     date: "2025.10.10",
+    //     desc: "연휴 영업 관련 내용은 이 위치에 작성된답니다.",
+    //     // img: "../../imgs/mm01.jpg",
+    //     id: "e",
+    //   },
+    // ]);
   }, []);
 
   // function closeModal(time) {

@@ -107,7 +107,7 @@ const NoticeDiv = styled.main`
   }
 `;
 
-export default function Notice() {
+export default function Notice({ notis }) {
   return (
     <NoticeDiv>
       <section className="title-wrap">

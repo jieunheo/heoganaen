@@ -13,15 +13,16 @@ function App() {
   const [cates, setCates] = useState({});
   const [loading, setLoading] = useState(true);
   const [recoms, setRecoms] = useState([]);
+  const [notis, setNotis] = useState([]);
 
   useEffect(() => {
-    async function getData() {
+    async function getMenuData() {
       try {
         const res = await fetch(
           "http://heoganaen.dothome.co.kr/api/getMenu.php"
         );
         if (!res.ok)
-          throw new Error("데이터를 가져오는 중 문제가 발생했습니다.");
+          throw new Error("메뉴 데이터를 가져오는 중 문제가 발생했습니다.");
         const data = await res.json();
 
         console.log(data);
@@ -40,19 +41,36 @@ function App() {
       }
     }
 
-    getData();
+    async function getNotiData() {
+      try {
+        const res = await fetch(
+          "http://heoganaen.dothome.co.kr/api/getNoti.php"
+        );
+        if (!res.ok)
+          throw new Error("공지 데이터를 가져오는 중 문제가 발생했습니다.");
+        const data = await res.json();
+        console.log(data);
+
+        setNotis(data.notis);
+      } catch (err) {
+        console.log(err);
+      }
+    }
+
+    getMenuData();
+    getNotiData();
   }, []);
 
   return (
     <BrowserRouter>
       <Header />
       <Routes>
-        <Route path="/" element={<Home recoms={recoms} />} />
+        <Route path="/" element={<Home recoms={recoms} notis={notis} />} />
         <Route
           path="/menu"
           element={<Menu allMenus={allMenus} cates={cates} loading={loading} />}
         />
-        <Route path="/notice" element={<Notice />} />
+        <Route path="/notice" element={<Notice notis={notis} />} />
         <Route path="/#directions" element={<Home />} />
       </Routes>
       <Footer />

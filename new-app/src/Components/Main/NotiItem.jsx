@@ -1,9 +1,12 @@
 import React from "react";
 
 export default function NotiItem({ item, openModal }) {
-  const dateSpit = item.date.split(".");
-  const year = `${dateSpit[0]}.${dateSpit[1]}`;
-  const day = dateSpit[2];
+  const date = item.create_date.split(" ");
+  const dateSplit = date[0].split("-");
+  const year = `${dateSplit[0]}.${dateSplit[1]}`;
+  const day = dateSplit[2];
+
+  const descValue = item.desc.split("\\n");
 
   return (
     <li key={item.id} className="noti-item" onClick={() => openModal(item)}>
@@ -13,7 +16,7 @@ export default function NotiItem({ item, openModal }) {
       </div>
       <div className="noti-info">
         <p className="noti-title">{item.title}</p>
-        <p className="noti-desc">{item.desc}</p>
+        <p className="noti-desc">{descValue[0]}</p>
       </div>
       {item.img && (
         <div className="img-wrap">
