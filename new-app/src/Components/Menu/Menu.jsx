@@ -140,6 +140,7 @@ const MenuDiv = styled.main`
     align-self: end;
   }
 
+  .new,
   .recom,
   .soldout {
     position: relative;
@@ -194,40 +195,8 @@ const MenuDiv = styled.main`
 //   drink: "음료",
 // };
 
-export default function Menu() {
-  const [allMenus, setAllMenus] = useState(null);
+export default function Menu({ cates, loading, allMenus }) {
   const [currentMenu, setCurrentMenu] = useState("main");
-  const [cates, setCates] = useState({});
-  const [loading, setLoading] = useState(true);
-  // console.log(viewMenus);
-
-  useEffect(() => {
-    async function getData() {
-      try {
-        const res = await fetch(
-          "http://heoganaen.dothome.co.kr/api/getMenu.php"
-        );
-        if (!res.ok)
-          throw new Error("데이터를 가져오는 중 문제가 발생했습니다.");
-        const data = await res.json();
-
-        console.log(data);
-
-        const allMenuData = data.menus;
-
-        setAllMenus(allMenuData);
-        setLoading(false);
-        setCates({
-          main: [...data["cates"]["main"]],
-          sub: [...data["cates"]["sub"]],
-        });
-      } catch (err) {
-        console.log(err);
-      }
-    }
-
-    getData();
-  }, []);
 
   function handleMenu(type) {
     console.log(allMenus[type]);
