@@ -1,13 +1,13 @@
 import React from "react";
 
-export default function MenuItem({ item }) {
+export default function MenuItem({ item, openModal }) {
   let classVar = "";
   if (item.recom > 0) classVar = "recom";
   if (item.new > 0) classVar = "new";
   if (item.soldout > 0) classVar = "soldout";
 
   return (
-    <li className="menu-item" key={item.id}>
+    <li className="menu-item" key={item.id} onClick={() => openModal(item)}>
       {item.url && (
         <div className={classVar}>
           <img src={item.url} alt={item.name} />

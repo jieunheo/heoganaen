@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import MenuItem from "./MenuItem";
 import MenuTab from "./MenuTab";
+import Modal from "../Modal/Modal";
 
 const MenuDiv = styled.main`
   .title-wrap {
@@ -174,6 +175,7 @@ const MenuDiv = styled.main`
     background-color: var(--color-new);
   }
   .soldout::after {
+    font-size: 16px;
     content: "Sold Out";
     background-color: rgba(0, 0, 0, 0.8);
     top: 0;
@@ -197,6 +199,15 @@ const MenuDiv = styled.main`
 
 export default function Menu({ cates, loading, allMenus }) {
   const [currentMenu, setCurrentMenu] = useState("main");
+  const [modal, setModal] = useState(null);
+
+  function openModal(item) {
+    setModal(item);
+  }
+
+  function closeModal() {
+    setModal(null);
+  }
 
   function handleMenu(type) {
     console.log(allMenus[type]);
@@ -236,7 +247,13 @@ export default function Menu({ cates, loading, allMenus }) {
                     <ul className="menu-list">
                       {allMenus[currentMenu].map((item) => {
                         if (item.sub === cate["sub_name"])
-                          return <MenuItem key={item.id} item={item} />;
+                          return (
+                            <MenuItem
+                              key={item.id}
+                              item={item}
+                              openModal={openModal}
+                            />
+                          );
                       })}
                     </ul>
                   </div>
@@ -245,6 +262,8 @@ export default function Menu({ cates, loading, allMenus }) {
           </>
         )}
       </section>
+
+      {modal && <Modal type="menu" item={modal} closeModal={closeModal} />}
     </MenuDiv>
   );
 }

@@ -97,7 +97,10 @@ const MenuDiv = styled.div`
 `;
 
 export default function Menu({ item, closeModal }) {
-  const [hover, setHover] = useState(false);
+  let classVar = "";
+  if (item.recom > 0) classVar = "recom";
+  if (item.new > 0) classVar = "new";
+  if (item.soldout > 0) classVar = "soldout";
 
   const descArr = item.desc.replaceAll(", ", " / ");
   // const explanation = item.explanation.replaceAll("\\n\\r", "<br />");
@@ -105,7 +108,7 @@ export default function Menu({ item, closeModal }) {
   return (
     <MenuDiv>
       <div className="menu-info">
-        <div className="img-wrap">
+        <div className={`img-wrap ${classVar}`}>
           <img src={item.url} alt={item.name} />
         </div>
         <div className="cont-wrap">
