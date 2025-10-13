@@ -1,10 +1,15 @@
 import React from "react";
 
 export default function MenuItem({ item }) {
+  let classVar = "";
+  if (item.recom > 0) classVar = "recom";
+  if (item.new > 0) classVar = "new";
+  if (item.soldout > 0) classVar = "soldout";
+
   return (
     <li className="menu-item" key={item.id}>
       {item.url && (
-        <div>
+        <div className={classVar}>
           <img src={item.url} alt={item.name} />
         </div>
       )}

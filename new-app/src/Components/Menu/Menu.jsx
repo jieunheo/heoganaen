@@ -139,6 +139,47 @@ const MenuDiv = styled.main`
 
     align-self: end;
   }
+
+  .recom,
+  .soldout {
+    position: relative;
+  }
+  .recom::after,
+  .new::after,
+  .soldout::after {
+    color: var(--color-white);
+    position: absolute;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .new::after,
+  .recom::after {
+    content: "BEST";
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 40px;
+
+    background-color: var(--color-best);
+    top: 0;
+    left: 0;
+    margin: 10px;
+    width: 40px;
+    height: 40px;
+  }
+  .new::after {
+    content: "NEW";
+    background-color: var(--color-new);
+  }
+  .soldout::after {
+    content: "Sold Out";
+    background-color: rgba(0, 0, 0, 0.8);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
 `;
 
 // const titleArray = {
