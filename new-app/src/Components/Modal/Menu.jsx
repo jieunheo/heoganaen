@@ -105,6 +105,8 @@ export default function Menu({ item, closeModal }) {
   const descArr = item.desc.replaceAll(", ", " / ");
   // const explanation = item.explanation.replaceAll("\\n\\r", "<br />");
 
+  const price = (+item.price).toLocaleString("ko-KR");
+
   return (
     <MenuDiv>
       <div className="menu-info">
@@ -122,7 +124,7 @@ export default function Menu({ item, closeModal }) {
             {descArr && <p className="desc">[ {descArr} ]</p>}
             <div className="line"></div>
             <p className="price">
-              <data value={item.price}>{item.price}</data>원
+              <data value={item.price}>{price}</data>원
             </p>
           </div>
           {item.explanation && (

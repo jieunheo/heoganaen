@@ -6,6 +6,8 @@ export default function MenuItem({ item, openModal }) {
   if (item.new > 0) classVar = "new";
   if (item.soldout > 0) classVar = "soldout";
 
+  const price = (+item.price).toLocaleString("ko-KR");
+
   return (
     <li className="menu-item" key={item.id} onClick={() => openModal(item)}>
       {item.url && (
@@ -21,7 +23,7 @@ export default function MenuItem({ item, openModal }) {
         <p className="menu-name-en">{item["en_name"]}</p>
         <hr className="gray-line" />
         <p className="menu-price">
-          <data value={item.price}>{item.price.toLocaleString("ko-KR")}</data>원
+          <data value={item.price}>{price}</data>원
         </p>
       </div>
     </li>
