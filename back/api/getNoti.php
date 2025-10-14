@@ -11,7 +11,7 @@ require_once 'config.php';
 try {
     $conn = getDBConnection();
 
-    $sql = "SELECT * FROM Noti WHERE is_view = 1 ORDER BY id ASC";
+    $sql = "SELECT * FROM Noti WHERE is_view = 1 ORDER BY id DESC";
     $result = $conn->query($sql);
     
     $notis = array();
