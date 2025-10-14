@@ -15,13 +15,16 @@ const NotiDiv = styled.div`
     font-size: 20px;
   }
 
+  .cont-wrap {
+    margin-bottom: 60px;
+    overflow-y: auto;
+  }
   .img-wrap {
     margin: 0 16px;
   }
 
   img {
     width: 100%;
-    max-height: 30vh;
   }
 
   .contents {
@@ -38,6 +41,10 @@ const NotiDiv = styled.div`
   }
 
   .btns-wrap {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+
     background: var(--color-white);
     font-weight: bold;
     font-size: 16px;
