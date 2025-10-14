@@ -31,7 +31,16 @@ export default function NotiItem({ noti }) {
             <img src={noti.url} alt={noti.title} />
           </div>
         )}
-        <p className="text">{noti.desc}</p>
+        <p className="text">
+          {noti.desc.split("\\n").map((line) => {
+            return (
+              <>
+                {line}
+                <br />
+              </>
+            );
+          })}
+        </p>
       </div>
     </li>
   );
