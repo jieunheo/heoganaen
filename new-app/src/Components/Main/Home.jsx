@@ -24,31 +24,9 @@ const MainDiv = styled.main`
   }
 `;
 
-export default function Home({ recoms, notis }) {
+export default function Home({ recoms, notis, infos }) {
   const [firstPopup, setFirstPopup] = useState(null);
   const [useFirstModal, setUseFirstModal] = useState(true);
-  //   {
-  //     title: "[공지] 2025년 추석 연휴 기간 영업일 안내",
-  //     date: "2025.10.10",
-  //     desc: "연휴 영업 관련 내용은 이 위치에 작성된답니다.",
-  //     img: "../../imgs/mm01.jpg",
-  //     id: "q",
-  //   },
-  //   {
-  //     title: "[공지] 2025년 추석 연휴 기간 영업일 안내",
-  //     date: "2025.10.10",
-  //     desc: "연휴 영업 관련 내용은 이 위치에 작성된답니다.",
-  //     img: "../../imgs/mm01.jpg",
-  //     id: "w",
-  //   },
-  //   {
-  //     title: "[공지] 2025년 추석 연휴 기간 영업일 안내",
-  //     date: "2025.10.10",
-  //     desc: "연휴 영업 관련 내용은 이 위치에 작성된답니다.",
-  //     // img: "../../imgs/mm01.jpg",
-  //     id: "e",
-  //   },
-  // ]);
   const [reviews, setReviews] = useState([
     {
       id: 0,
@@ -148,29 +126,6 @@ export default function Home({ recoms, notis }) {
         url: "https://map.naver.com/p/entry/place/16792179?c=18.52,0,0,0,dh&placePath=/review?selectedReview=6833ee0314d269f812efb587&selectedReview=6833ee0314d269f812efb587&fromPanelNum=1&additionalHeight=76&timestamp=202510091349&locale=ko&svcName=map_pcv5",
       },
     ]);
-
-    //   {
-    //     title: "[공지] 2025년 추석 연휴 기간 영업일 안내",
-    //     date: "2025.10.10",
-    //     desc: "연휴 영업 관련 내용은 이 위치에 작성된답니다.",
-    //     img: "../../imgs/mm01.jpg",
-    //     id: "q",
-    //   },
-    //   {
-    //     title: "[공지] 2025년 추석 연휴 기간 영업일 안내",
-    //     date: "2025.10.10",
-    //     desc: "연휴 영업 관련 내용은 이 위치에 작성된답니다.",
-    //     img: "../../imgs/mm01.jpg",
-    //     id: "w",
-    //   },
-    //   {
-    //     title: "[공지] 2025년 추석 연휴 기간 영업일 안내",
-    //     date: "2025.10.10",
-    //     desc: "연휴 영업 관련 내용은 이 위치에 작성된답니다.",
-    //     // img: "../../imgs/mm01.jpg",
-    //     id: "e",
-    //   },
-    // ]);
   }, []);
 
   // function closeModal(time) {
@@ -205,7 +160,7 @@ export default function Home({ recoms, notis }) {
           makeItem={makeItem}
         />
       )} */}
-      <Banner />
+      <Banner infos={infos} />
       <SectionWrap
         title="추천 메뉴"
         desc={

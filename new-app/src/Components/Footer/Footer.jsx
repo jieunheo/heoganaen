@@ -59,7 +59,9 @@ const FooterDiv = styled.footer`
   }
 `;
 
-function Footer() {
+function Footer({ infos }) {
+  console.log(infos);
+
   const instaUrl =
     "https://www.instagram.com/heoganean_jeonju/?igsh=MWlzb2dpdnR1dXZodA%3D%3D&utm_source=qr#";
   return (
@@ -95,21 +97,30 @@ function Footer() {
             <address>
               <h3 className="a11y-hidden">가게 정보</h3>
               <ul className="addr-list">
-                <li>전북 전주시 완산구 동문길 64, 허가낸 닭발</li>
-                <li>사업자번호: 110-434-260738 (허롱)</li>
+                <li>{infos?.address?.value}</li>
                 <li>
-                  전화번호: <a href="tel:0632887297">063) 288-7297</a>
+                  사업자번호: {infos?.bus_num?.value} ({infos?.master?.value})
+                </li>
+                <li>
+                  전화번호:{" "}
+                  <a
+                    href={`tel:${infos?.number?.value
+                      .replace(")", "")
+                      .replace("-", "")}`}
+                  >
+                    {infos?.number?.value}
+                  </a>
                 </li>
               </ul>
             </address>
           </div>
           <h3 className="a11y-hidden">sns 정보</h3>
-          <a href={instaUrl} target="_blank">
+          <a href={infos?.insta?.value} target="_blank">
             <img src="./imgs/icon-insta.svg" alt="insta" />
           </a>
         </div>
         <small className="copy">
-          Copyright © <span>2025 by Heojieun.</span> All Rights Reserved.
+          Copyright © <span>{infos?.copy?.value}</span> All Rights Reserved.
         </small>
       </div>
     </FooterDiv>

@@ -18,6 +18,8 @@ function App() {
   const [notis, setNotis] = useState([]);
   const [notiCount, setNotiCount] = useState(0);
 
+  const [infos, setInfos] = useState(0);
+
   useEffect(() => {
     async function getMenuData() {
       try {
@@ -60,16 +62,36 @@ function App() {
         console.log(err);
       }
     }
+    async function getInfoData() {
+      try {
+        const res = await fetch(
+          "http://heoganaen.dothome.co.kr/api/getInfo.php"
+        );
+        if (!res.ok)
+          throw new Error("정보 데이터를 가져오는 중 문제가 발생했습니다.");
+        const data = await res.json();
+
+        console.log(data.infos);
+
+        setInfos(data.infos);
+      } catch (err) {
+        console.log(err);
+      }
+    }
 
     getMenuData();
     getNotiData();
+    getInfoData();
   }, []);
 
   return (
     <BrowserRouter>
       <Header />
       <Routes>
-        <Route path="/" element={<Home recoms={recoms} notis={notis} />} />
+        <Route
+          path="/"
+          element={<Home recoms={recoms} notis={notis} infos={infos} />}
+        />
         <Route
           path="/menu"
           element={<Menu allMenus={allMenus} cates={cates} loading={loading} />}
@@ -80,7 +102,7 @@ function App() {
         />
         <Route path="/#directions" element={<Home />} />
       </Routes>
-      <Footer />
+      <Footer infos={infos} />
     </BrowserRouter>
   );
 }

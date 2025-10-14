@@ -91,7 +91,7 @@ export default function NotiList({ notis }) {
       <NotiWrap>
         <ul className="noti-list">
           {notis.map((item) => {
-            return <NotiItem item={item} openModal={openModal} />;
+            return <NotiItem item={item} openModal={openModal} key={item.id} />;
           })}
         </ul>
 
