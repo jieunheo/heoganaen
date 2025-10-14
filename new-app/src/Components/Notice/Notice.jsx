@@ -26,6 +26,7 @@ const NoticeDiv = styled.main`
     background: var(--color-white);
     margin: 0 auto;
     max-width: 1024px;
+    min-height: 55vh;
     padding: 40px;
   }
 
