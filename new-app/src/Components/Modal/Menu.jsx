@@ -127,7 +127,7 @@ export default function Menu({ item, closeModal }) {
           </div>
           {item.explanation && (
             <div className="explanation">
-              {item.explanation.split("\n").map((line) => {
+              {item.explanation.split("\\n").map((line) => {
                 return (
                   <>
                     {line}

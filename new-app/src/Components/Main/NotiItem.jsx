@@ -18,9 +18,9 @@ export default function NotiItem({ item, openModal }) {
         <p className="noti-title">{item.title}</p>
         <p className="noti-desc">{descValue[0]}</p>
       </div>
-      {item.img && (
+      {item.url && (
         <div className="img-wrap">
-          <img src={item.img} alt="" />
+          <img src={item.url} alt="" />
         </div>
       )}
     </li>
