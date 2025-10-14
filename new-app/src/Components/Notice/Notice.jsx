@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import NotiItem from "./NotiItem";
 const NoticeDiv = styled.main`
   .title-wrap {
     padding: 60px 0 40px;
@@ -20,6 +21,11 @@ const NoticeDiv = styled.main`
   .desc {
     font-size: 16px;
     text-align: center;
+  }
+
+  .popup {
+    font-weight: bold;
+    color: var(--color-main);
   }
 
   .cont-wrap {
@@ -63,7 +69,7 @@ const NoticeDiv = styled.main`
   .table {
     margin-top: 16px;
   }
-  .row {
+  .row .item-title {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -89,6 +95,39 @@ const NoticeDiv = styled.main`
   .row.table-title .noti-title {
     justify-content: center;
   }
+  .table-item .item-title {
+    cursor: pointer;
+  }
+  .table-item .item-title:hover {
+    background-color: var(--color-lightgray);
+  }
+
+  .noti-desc {
+    background-color: var(--color-lightgray);
+    overflow: hidden;
+    max-height: 0px;
+
+    transition: 0.3s;
+  }
+  .noti-desc.open {
+    max-height: 100vh;
+    height: auto;
+  }
+  .noti-desc .img-wrap {
+    max-width: 661px;
+    border-radius: 8px;
+    overflow: hidden;
+    font-size: 0;
+    margin: 16px 16px 0;
+  }
+  .noti-desc .img-wrap img {
+    width: 100%;
+  }
+  .noti-desc .text {
+    width: 100%;
+    flex-grow: 1;
+    padding: 16px;
+  }
 
   .page-wrap {
     margin-top: 16px;
@@ -108,7 +147,7 @@ const NoticeDiv = styled.main`
   }
 `;
 
-export default function Notice({ notis }) {
+export default function Notice({ notis, notiCount }) {
   return (
     <NoticeDiv>
       <section className="title-wrap">
@@ -119,10 +158,10 @@ export default function Notice({ notis }) {
         </p>
       </section>
       <section className="cont-wrap">
-        <h3 className="a11y-hidden">공지사항 검색</h3>
+        {/* <h3 className="a11y-hidden">공지사항 검색</h3>
         <div className="top-wrap">
           <p className="total">
-            총 <data value="52">52</data>개
+            총 <data value={notiCount}>{notiCount}</data>개
           </p>
           <form action="">
             <div className="form-wrap">
@@ -136,102 +175,30 @@ export default function Notice({ notis }) {
               </button>
             </div>
           </form>
-        </div>
+        </div> */}
 
         <div>
           <h3 className="a11y-hidden">공지사항 목록</h3>
+          <p className="total">
+            총 <data value={notiCount}>{notiCount}</data>개
+          </p>
           <ul className="table">
             <li className="row table-title">
-              <p className="noti-num">번호</p>
-              <p className="noti-title">제목</p>
-              <p className="noti-date">작성일</p>
-              <p className="noti-count">조회</p>
+              <div className="item-title">
+                <p className="noti-num">번호</p>
+                <p className="noti-title">제목</p>
+                <p className="noti-date">작성일</p>
+              </div>
             </li>
-            <li className="row">
-              <p className="noti-num">1</p>
-              <p className="noti-title">
-                [공지] 2025년 추석 연휴 기간 영업일 안내
-              </p>
-              <p className="noti-date">2025.10.10</p>
-              <p className="noti-count">312</p>
-            </li>
-            <li className="row">
-              <p className="noti-num">1</p>
-              <p className="noti-title">
-                [공지] 2025년 추석 연휴 기간 영업일 안내
-              </p>
-              <p className="noti-date">2025.10.10</p>
-              <p className="noti-count">312</p>
-            </li>
-            <li className="row">
-              <p className="noti-num">1</p>
-              <p className="noti-title">
-                [공지] 2025년 추석 연휴 기간 영업일 안내
-              </p>
-              <p className="noti-date">2025.10.10</p>
-              <p className="noti-count">312</p>
-            </li>
-            <li className="row">
-              <p className="noti-num">1</p>
-              <p className="noti-title">
-                [공지] 2025년 추석 연휴 기간 영업일 안내
-              </p>
-              <p className="noti-date">2025.10.10</p>
-              <p className="noti-count">312</p>
-            </li>
-            <li className="row">
-              <p className="noti-num">1</p>
-              <p className="noti-title">
-                [공지] 2025년 추석 연휴 기간 영업일 안내
-              </p>
-              <p className="noti-date">2025.10.10</p>
-              <p className="noti-count">312</p>
-            </li>
-            <li className="row">
-              <p className="noti-num">1</p>
-              <p className="noti-title">
-                [공지] 2025년 추석 연휴 기간 영업일 안내
-              </p>
-              <p className="noti-date">2025.10.10</p>
-              <p className="noti-count">312</p>
-            </li>
-            <li className="row">
-              <p className="noti-num">1</p>
-              <p className="noti-title">
-                [공지] 2025년 추석 연휴 기간 영업일 안내
-              </p>
-              <p className="noti-date">2025.10.10</p>
-              <p className="noti-count">312</p>
-            </li>
-            <li className="row">
-              <p className="noti-num">1</p>
-              <p className="noti-title">
-                [공지] 2025년 추석 연휴 기간 영업일 안내{" "}
-                <img src="../../imgs/icon-img.svg" alt="" />
-              </p>
-              <p className="noti-date">2025.10.10</p>
-              <p className="noti-count">312</p>
-            </li>
-            <li className="row">
-              <p className="noti-num">1</p>
-              <p className="noti-title">
-                [공지] 2025년 추석 연휴 기간 영업일 안내
-              </p>
-              <p className="noti-date">2025.10.10</p>
-              <p className="noti-count">312</p>
-            </li>
-            <li className="row">
-              <p className="noti-num">1</p>
-              <p className="noti-title">
-                [공지] 2025년 추석 연휴 기간 영업일 안내
-              </p>
-              <p className="noti-date">2025.10.10</p>
-              <p className="noti-count">312</p>
-            </li>
+            {notis.length > 0 ? (
+              notis.map((noti) => <NotiItem noti={noti} key={noti.id} />)
+            ) : (
+              <li>공지가 없습니다.</li>
+            )}
           </ul>
         </div>
 
-        <div className="pagenation">
+        {/* <div className="pagenation">
           <ul className="page-wrap">
             <li className="page-item">
               <button>
@@ -278,7 +245,7 @@ export default function Notice({ notis }) {
               </button>
             </li>
           </ul>
-        </div>
+        </div> */}
       </section>
     </NoticeDiv>
   );

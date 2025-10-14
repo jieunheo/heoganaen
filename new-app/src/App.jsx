@@ -12,8 +12,11 @@ function App() {
   const [allMenus, setAllMenus] = useState(null);
   const [cates, setCates] = useState({});
   const [loading, setLoading] = useState(true);
+
   const [recoms, setRecoms] = useState([]);
+
   const [notis, setNotis] = useState([]);
+  const [notiCount, setNotiCount] = useState(0);
 
   useEffect(() => {
     async function getMenuData() {
@@ -52,6 +55,7 @@ function App() {
         console.log(data);
 
         setNotis(data.notis);
+        setNotiCount(data.count);
       } catch (err) {
         console.log(err);
       }
@@ -70,7 +74,10 @@ function App() {
           path="/menu"
           element={<Menu allMenus={allMenus} cates={cates} loading={loading} />}
         />
-        <Route path="/notice" element={<Notice notis={notis} />} />
+        <Route
+          path="/notice"
+          element={<Notice notis={notis} notiCount={notiCount} />}
+        />
         <Route path="/#directions" element={<Home />} />
       </Routes>
       <Footer />
