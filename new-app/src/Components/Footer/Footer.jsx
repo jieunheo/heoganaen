@@ -79,7 +79,7 @@ function Footer() {
             <nav className="footer-gnb">
               <ul>
                 <li className="gnb-item">
-                  <Link to="/">브랜드</Link>
+                  <Link to="/">메인</Link>
                 </li>
                 <li className="gnb-item">
                   <Link to="/menu">메뉴</Link>
